@@ -132,7 +132,9 @@ app.directive('quindarwidget', ['$compile', function (compile) {
   return {
     restrict: 'AE',
     scope: {
-      quindarwidget: '@'
+      quindarwidget: '@',
+      options: '@',
+      data: '@'
     },
     replace: true,   
     template: '<div></div>',
@@ -144,7 +146,14 @@ app.directive('quindarwidget', ['$compile', function (compile) {
 
     link: function (scope, elm, attrs) {
       scope.buildView = function (viewName) {
-        var z = compile('<' + viewName + '></' + viewName + '>')(scope);
+        var zz = '<' + viewName + '></' + viewName + '>';
+        //var zz = '<' + viewName + ' options="' + attrs.options +
+        //  '" data="' + attrs.data + '"></' + viewName + '>';
+        var z = compile(zz)(scope);
+        //var zz = '<' + viewName + '></' + viewName + '>';
+        //var z = compile('<' + viewName + '></' + viewName + '>')(scope);
+        //var z = compile('<' + viewName + ' options="options" data="data"></' + viewName + '>')(scope);
+        console.log('....zz=' + zz);
         elm.append(z);
       }
     }

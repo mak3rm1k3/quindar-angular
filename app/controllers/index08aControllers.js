@@ -7,7 +7,7 @@
 // for google charts only; can be removed for quindar 
 google.load('visualization', '1', {'packages':['corechart']});
 
-var app = angular.module("app", ['gridster', 'ui.bootstrap', 'ui.router', 'angular-flot']);
+var app = angular.module("app", ['gridster', 'ui.bootstrap', 'ui.router', 'angular-flot', 'nvd3']);
 
 // ui.router definitions
  app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -159,8 +159,15 @@ app.controller('dashboardController', ['$scope', '$timeout', 'adminFactory',
           row: 0,
           sizeY: 1,
           sizeX: 1,
-          name: "Page 1- Countdown Clock",
+          name: "Page 1 - Countdown Clock",
           directive: "wttime"
+        },{
+          col: 2,
+          row: 1,
+          sizeY: 1,
+          sizeX: 2,
+          name: "Page 1 - d3",
+          directive: "nvd3"
         }]
       },
       '2': {
@@ -279,6 +286,15 @@ app.controller('dashboardController', ['$scope', '$timeout', 'adminFactory',
           width: '50%'
         }
       },
+      ,
+      {
+        name: 'd3',
+        directive: 'nvd3',
+        dataAttrName: 'data',
+        style: {
+          width: '50%'
+        }
+      }
     ];
 
     $scope.widgetDefinitions = widgetDefinitions;
@@ -287,7 +303,8 @@ app.controller('dashboardController', ['$scope', '$timeout', 'adminFactory',
       { name: 'Line Plot' },
       { name: 'Countdown Clock' },
       { name: 'Quindar Pie' },
-      { name: 'Ground Track' }
+      { name: 'Ground Track' },
+      { name: 'd3' }
     ];
 
     $scope.clearOptions = [
@@ -465,6 +482,56 @@ app.controller('dashboardController', ['$scope', '$timeout', 'adminFactory',
       $scope.selectedDashboardId = nextPage;
       $scope.dashboard = $scope.dashboards[nextPage];
     };
+
+
+    // test d3
+     // nvd3 for charts
+  $scope.optionsX = { 
+    chart: {
+        type: 'lineChart',
+        height: 450,
+        margin : {
+            top: 20,
+            right: 20,
+            bottom: 60,
+            left: 105 // 55
+        },
+        x: function(d){ return d.x; },
+        y: function(d){ return d.y; },
+        showValues: true,
+        valueFormat: function(d){
+            return d3.format(',.4f')(d);
+        },
+        transitionDuration: 500,
+        xAxis: {
+            axisLabel: '# Past Days'
+        },
+        yAxis: {
+            axisLabel: '# Messages',
+            axisLabelDistance: 10
+        }
+    }
+  };
+
+  $scope.getPositionMetricsLast5 = function(vehicleId, nItems) {
+    adminFactory.getPositionPartial(vehicleId, nItems)
+    .success(function(data, status) {
+      var tmpValues = [];
+      $scope.positionDataSet = data.data;
+      for (var i = 0; i < $scope.positionDataSet.length; i++) {
+         tmpValues.push({ x: i, y: $scope.positionDataSet[i].y });
+      };
+      $scope.data = [ { key: "Position Metrics", values:  tmpValues }];
+      console.log("getPositionPartial() status=" + status + "   $scope.data=" + JSON.stringify($scope.data));
+    })
+    .error(function(err) {
+      console.error('Sorry, Quindar platform cannot serve getPositionPartial() immediately. Please retry later.');
+    });
+  };
+
+  $scope.getPositionMetricsLast5('IBEX', 100);
+
+  // test d3
 
     // test flot: begin
 
