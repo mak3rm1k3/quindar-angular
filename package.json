@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "install": "napa"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,10 @@
   "bugs": {
     "url": "https://github.com/audacyDevOps/quindar-angular/issues"
   },
+  "napa": {
+    "angular": "angular/bower-angular",
+    "angular-route": "angular/bower-angular-route"
+  },
   "homepage": "https://github.com/audacyDevOps/quindar-angular#readme",
   "dependencies": {
     "async": "^2.0.0-rc.3",
@@ -31,10 +36,14 @@
     "express-mongoose-docs": "^0.3.1",
     "file-stream-rotator": "0.0.6",
     "fs": "0.0.2",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-copy": "^1.0.0",
     "line-by-line": "^0.1.4",
     "mocha": "^2.4.5",
     "mongoose": "^4.4.14",
     "morgan": "^1.7.0",
+    "napa": "^2.3.0",
     "nodemon": "^1.9.2",
     "pug": "^2.0.0-alpha7",
     "randomstring": "^1.1.4",
