@@ -5,7 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "napa",
     "start": "node server.js"
+  },
+  "napa": {
+    "groundtrack": "https://github.com/audacyDevOps/quindar-groundtrack",
+    "lineplot": "https://github.com/audacyDevOps/quindar-lineplot"
   },
   "repository": {
     "type": "git",
@@ -30,14 +35,29 @@
     "express": "^4.13.4",
     "express-mongoose-docs": "^0.3.1",
     "file-stream-rotator": "0.0.6",
-    "pug": "^2.0.0-alpha7",
     "fs": "0.0.2",
     "line-by-line": "^0.1.4",
     "mocha": "^2.4.5",
     "mongoose": "^4.4.14",
     "morgan": "^1.7.0",
+    "nodemon": "^1.9.2",
+    "pug": "^2.0.0-alpha7",
     "randomstring": "^1.1.4",
     "socket.io": "^1.4.6",
+    "uglify-js": "^2.6.4",
     "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-dev-update": "^2.0.0",
+    "grunt-processhtml": "^0.4.0",
+    "load-grunt-tasks": "^3.5.0",
+    "napa": "^2.3.0"
   }
 }
