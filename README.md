@@ -1,7 +1,7 @@
 # quindar-angular
 AngularJS version for widgets and data visualization framework
 
-# Napa + npm + grunt:
+#napa + npm + grunt:
 
 In order to automatically stay up to date with third party dependencies and Audacy github projects while developing, we use npm backend packaging with support from napa and grunt. Napa allows for github pulls (as well as other sources) for our and others’ code, and grunt automates the process, as well as other processes (explained below). More information for each can be found here:
 
@@ -63,4 +63,4 @@ Read the rest of the Gruntfile.js for more examples.
 
 Napa and grunt used with npm automates several tasks to make development easier.
 
-####Updated 06/30/2016 by Michael McKenna
+#####Updated 06/30/2016 by Michael McKenna
