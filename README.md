@@ -5,16 +5,20 @@ AngularJS version for widgets and data visualization framework
 
 In order to automatically stay up to date with third party dependencies and Audacy github projects while developing, we use npm backend packaging with support from napa and grunt. Napa allows for github pulls (as well as other sources) for our and others’ code, and grunt automates the process, as well as other processes (explained below). More information for each can be found here:
 
-[npm](https://www.npmjs.com/)
-[napa](https://github.com/shama/napa)
-[grunt](http://gruntjs.com/)
+[npm](https://www.npmjs.com/) npm is a backend package management service.
 
-Napa is included in our package.json file as a dependency already and dictates the github projects to pull from to keep development code up to date. To install napa, simply run the buildme:
+[napa](https://github.com/shama/napa) napa dictates pulls from github (and other sources) to keep development code up to date.
+
+[grunt](http://gruntjs.com/) grunt automates tasks such as app dependency updating and script minification.
+
+##How to Install
+Napa is already included in our package.json file as a dependency and to install, simply run the buildme:
 
 $ ./buildme.sh
 
-An example:
+The buildme will also install grunt and its necessary dependencies.
 
+##napa example:
 In package.json:
 ```javascript
 scripts:{
@@ -25,11 +29,9 @@ scripts:{
 	“groundtrack”: “https://github.com/audacydevops/quindar-groundtrack"
 	}
 ```
-
 This crawls to our github repository “quindar-groundtrack” and downloads the most recent copy of the ground track widget code to keep the developer current. It will run with the npm install command or by running the buildme.sh file.
 
-The buildme will also install grunt and its necessary dependencies. Grunt automates tasks such as app dependency updating and script minification.
-
+##grunt example:
 Gruntfile.js keeps the dependencies up to date with devUpdate. devUpdate reads the dependency and devDependency lists in package.json and automatically checks their repositories for the most current version and updates local dependencies if necessary. Like so:
 ```javascript
 module.exports = function(grunt) {
@@ -63,4 +65,4 @@ Read the rest of the Gruntfile.js for more examples.
 
 Napa and grunt used with npm automates several tasks to make development easier.
 
-#Updated 06/30/2016 by Michael McKenna
+####Updated 06/30/2016 by Michael McKenna
