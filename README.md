@@ -24,8 +24,8 @@ scripts:{
 	},
 
 “napa”:{
-	“groundtrack”: “https://github.com/audacydevops/quindar-groundtrack"
-	}
+	“groundtrack”: 'https://github.com/audacydevops/quindar-groundtrack'
+	},
 ```
 This crawls to our github repository “quindar-groundtrack” and downloads the most recent copy of the ground track widget code to keep the developer current. It will run with the npm install command or by running the buildme.sh file.
 
