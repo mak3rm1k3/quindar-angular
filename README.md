@@ -12,11 +12,9 @@ In order to automatically stay up to date with third party dependencies and Auda
 [grunt](http://gruntjs.com/) grunt automates tasks such as app dependency updating and script minification.
 
 ##How to Install
-Napa is already included in our package.json file as a dependency and to install, simply run the buildme:
+napa and grunt are already included in our package.json file as a dependencies and to install, simply run the buildme:
 
 $ ./buildme.sh
-
-The buildme will also install grunt and its necessary dependencies.
 
 ##napa example:
 In package.json:
