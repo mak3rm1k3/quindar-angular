@@ -76,7 +76,7 @@ module.exports = function(grunt) {
 	 	 
     });
 	
-	//grunt.file.delete('app/directives/angular-groundtrack.js', /*'app/directives/angular-lineplot.js'*/);
+	
 
 	grunt.loadNpmTasks('grunt-contrib-copy');
   	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -87,9 +87,7 @@ module.exports = function(grunt) {
   	grunt.loadNpmTasks('grunt-dev-update');
   	grunt.loadNpmTasks('grunt-contrib-clean');
 
-  	grunt.registerTask('est', ['clean', 'copy']);
-  	grunt.registerTask('test', ['devUpdate'/*'concat', 'processhtml', 'cssmin', 'uglify', 'watch'*/]);
-
-  	//grunt.registerTask('default',['devUpdate', 'concat', 'uglify', 'processhtml', 'watch']);
+  	grunt.registerTask('est', ['devUpdate', 'clean', 'copy']);
+  	grunt.registerTask('default',['concat', 'cssmin', 'uglify', 'processhtml', 'watch']);
 };
 
